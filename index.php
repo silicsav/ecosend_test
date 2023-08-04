@@ -5,23 +5,32 @@
 
 <center>
   <form class= 'submit_form'>
-<div class="form-group">
-  <div class="col-md-6">
-    <label for="name" class="form-label">Name</label>
-    <input type="text" name = 'name' class="form-control" id="name">
-   
+
+  <div class="form-group row col-md-6">
+    <label for="name" class="col-sm-2 col-form-label">Name</label>
+    <div class="col-sm-10">
+      <input type="text" name = 'name' class="form-control" id="name" placeholder="name">
+    </div>
   </div>
-  <div class="col-md-6">
-    <label for="address" class="form-label">Description</label>
-    <input type="text" name = 'description' class="form-control" id="description">
+
+<br>
+  <div class="form-group row col-md-6">
+    <label for="descritpion " class="col-sm-2 col-form-label">Description</label>
+    <div class="col-sm-10">
+      <input type="text" name = 'description'  class="form-control" id="description" placeholder="description">
+    </div>
   </div>
-  <div class="col-md-6">
-    <label for="address" class="form-label">Address</label>
-    <input type="text" name = 'address' class="form-control" id="address">
+  <br>
+  <div class="form-group row col-md-6">
+    <label for="address" class="col-sm-2 col-form-label">Address</label>
+    <div class="col-sm-10">
+      <input type="text" name = 'address' class="form-control" id="address" placeholder="Address">
+    </div>
   </div>
-  <div class="form-group">
-  <div class="col-md-6">
-    <label for="state">country</label>
+  <br>
+  <div class="form-group row col-md-6">
+  <label for="address" class="col-sm-2 col-form-label">Country</label>
+  <div class="col-sm-10">
     <select name = 'country' class="form-control" id="country">
       <option>Kenya</option>
       <option>USA</option>
@@ -29,34 +38,46 @@
      
     </select>
 </div>
-
-  <div class="form-group">
-  <div class="col-md-6">
-    <label for="state">State</label>
-    <select name = 'state' class="form-control" id="state">
-      <option>Nairobi</option>
+</div>
+<br>
+<div class="form-group row col-md-6">
+  <label for="address" class="col-sm-2 col-form-label">State</label>
+  <div class="col-sm-10">
+    <select name = 'country' class="form-control" id="country">
+    <option>Nairobi</option>
       <option>New York</option>
       <option>Berlin</option>
      
     </select>
 </div>
-
-<div class="col-md-6">
-    <label for="state">City</label>
-    <select name = 'city' class="form-control" id="city">
-      <option>Naivasha</option>
+</div>
+<br>
+<div class="form-group row col-md-6">
+  <label for="address" class="col-sm-2 col-form-label">City</label>
+  <div class="col-sm-10">
+    <select name = 'country' class="form-control" id="country">
+    <option>Naivasha</option>
       <option></option>
       <option>Texas</option>
       <option>Frankfurt</option>
-   
+     
     </select>
 </div>
+</div>
+
+<br>
+<div class="form-group row col-md-6">
+    <label for="name" class="col-sm-2 col-form-label">Zip</label>
+    <div class="col-sm-10">
+      <input type="text" name = 'zip' class="form-control" id="zip" placeholder="Zip">
+    </div>
   </div>
   <br>
-  <button type="button" class="btn btn-primary"  onclick = 'addNewRow()'>Add product</button>
-  <hr>
+  </div>
+
+  <button type="button" class="btn btn-secondary"  onclick = 'addNewRow()'>Add product</button>
   <div>    
-    <table width="100%" id="dtExample" class="display " cellspacing="0">    
+    <table width="50%" id="dtExample" class="display" cellspacing="0">    
         <thead>    
             <tr>    
     
@@ -74,7 +95,7 @@
 </div> 
 
 <div id ="response_message"></div>
-<input type = "text" id="added_data"/>
+<input type = "hidden" id="added_data"/>
   <button type="button" id="submit_button"  onclick = 'submit_form()'class="btn btn-primary">Submit</button>
 
 </form>
