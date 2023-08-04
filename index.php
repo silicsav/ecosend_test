@@ -43,7 +43,7 @@
 <div class="form-group row col-md-6">
   <label for="address" class="col-sm-2 col-form-label">State</label>
   <div class="col-sm-10">
-    <select name = 'country' class="form-control" id="country">
+    <select name = 'state' class="form-control" id="state">
     <option>Nairobi</option>
       <option>New York</option>
       <option>Berlin</option>
@@ -55,7 +55,7 @@
 <div class="form-group row col-md-6">
   <label for="address" class="col-sm-2 col-form-label">City</label>
   <div class="col-sm-10">
-    <select name = 'country' class="form-control" id="country">
+    <select name = 'city' class="form-control" id="city">
     <option>Naivasha</option>
       <option></option>
       <option>Texas</option>
@@ -94,7 +94,49 @@
     </table>    
 </div> 
 
-<div id ="response_message"></div>
+<!-- <div id ="response_message"></div> -->
+<!-- Thank you modal -->
+
+<div class="modal" id= "success_modal" tabindex="-1" role="dialog">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Success</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <p style = 'color:blue'>Thank you for your purchase, We shall deliver the products to the given address</p>
+      </div>
+      <div class="modal-footer">
+        <!-- <button type="button" class="btn btn-primary">Save changes</button> -->
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- Failure modal  -->
+<div class="modal"  id= "failed_modal" tabindex="-1" role="dialog">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Failed</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <p style = 'color:red'>An error has occured, Please try again later</p>
+      </div>
+      <div class="modal-footer">
+        <!-- <button type="button" class="btn btn-primary">Save changes</button> -->
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+
 <input type = "hidden" id="added_data"/>
   <button type="button" id="submit_button"  onclick = 'submit_form()'class="btn btn-primary">Submit</button>
 
@@ -102,6 +144,7 @@
 </center>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.0/jquery.min.js"></script>
 <script src= 'https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js'/>
+<script src="https://cdn.jsdelivr.net/npm/jquery-validation@1.19.5/dist/jquery.validate.js"></script>
   // <script src="https://cdn.datatables.net/1.13.6/js/jquery.dataTables.js"></script>
   <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.10.21/js/jquery.dataTables.js">
 </script>
@@ -110,13 +153,15 @@
 $(document).ready( function () {
   // $.fn.dataTableExt.sErrMode = 'throw';
     $('#dtExample').DataTable();
-    fnLoadDataTableInstance()  
+    fnLoadDataTableInstance()   
    
 } );
   
 function submit_form() {
 
   let data = $('.submit_form').serializeArray();
+ 
+
   //submit the form. 
   $.ajax({
     method: "POST",
@@ -127,12 +172,12 @@ function submit_form() {
       if (response.status == 200){
         //data saved.
         $('.submit_form')[0].reset();
-        $('#response_message').html('<p style="font-size:20, color:blue>'+ response.message+'</p>');
+        $("#success_modal").modal('show')
 
 
       }
       else{
-        $('#response_message').html('<p style="font-size:20, color:red>'+ response.message+'</p>');
+        $("#failed_modal").modal('show')
       }
 
     }
