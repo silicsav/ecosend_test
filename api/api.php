@@ -17,12 +17,12 @@ $city = isset($_POST['city']);
 $zip = isset($_POST['zip']);
 
 $resp = new stdClass();
+
 if($name =='' ||$desc =='' ||$add =='' ||$country =='' ||$state=='' ||$city==''){
     $resp->status = 201;
     $resp->message = 'all parameters are required';
     echo json_encode($resp);
     exit;
-
 
 }
 
